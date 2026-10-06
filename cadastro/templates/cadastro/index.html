@@ -1,0 +1,10 @@
+{% block conteudo %}
+    <h1>Pessoas Cadastradas</h1>
+    <ul>
+        {% for pessoa in pessoas %}
+            <li>{{ pessoa.nome }} — {{ pessoa.email }} — {{ pessoa.idade }} anos</li>
+        {% empty %}
+            <li>Nenhuma pessoa cadastrada ainda.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
