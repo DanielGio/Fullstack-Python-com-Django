@@ -1,0 +1,20 @@
+{% extends 'cadastro/base.html' %}
+
+{% block titulo %}Cadastro - {{ pessoa.nome }}{% endblock %}
+
+{% block conteudo %}
+<article>
+    <h2>Detalhes de {{ pessoa.nome }}</h2>
+    <ul>
+        <li><strong>ID:</strong> {{ pessoa.id }}</li>
+        <li><strong>Nome:</strong> {{ pessoa.nome }}</li>
+        <li><strong>E-mail:</strong> {{ pessoa.email }}</li>
+        <li><strong>Idade:</strong> {{ pessoa.idade }} anos</li>
+        <li><strong>Telefone:</strong> {{ pessoa.telefone }}</li>
+        <li><strong>Apelido:</strong> {{ pessoa.apelido }}</li>
+    </ul>
+    <a href="{% url 'editar' pessoa.id %}">Editar</a> |
+    <a href="/pessoa/{{ pessoa.id }}/deletar/">Apagar</a> |
+    <a href="{% url 'index' %}">Voltar</a>
+</article>
+{% endblock %}

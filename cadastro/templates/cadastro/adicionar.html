@@ -1,13 +1,15 @@
 {% extends 'cadastro/base.html' %}
 
-{% block titulo %}Adicionar Pessoa{% endblock %}
+{% block titulo %}Cadastro - Adicionar Pessoa{% endblock %}
 
 {% block conteudo %}
-    <h1>Adicionar Pessoa</h1>
+<article>
+    <h2>Adicionar Pessoa</h2>
 
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Salvar</button>
     </form>
+</article>
 {% endblock %}
