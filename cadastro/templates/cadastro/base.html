@@ -13,11 +13,11 @@
     </header>
     <hr>
 
-    <nav>
-        <a href="/">Início</a> |
-        <a href="/adicionar/">Adicionar</a> |
-        <a href="/contato/">Contato</a>
-    </nav>
+<nav>
+    <a href="{% url 'index' %}">Início</a> |
+    <a href="{% url 'contato' %}">Contato</a> |
+    <a href="{% url 'adicionar' %}">Adicionar</a>
+</nav>
     <hr>
 
     <main>

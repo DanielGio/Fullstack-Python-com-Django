@@ -20,3 +20,4 @@ urlpatterns = [
     # Deletar 
     path('pessoa/<int:id>/deletar/', views.deletar, name='deletar'),
 ]
+

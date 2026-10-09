@@ -13,8 +13,8 @@
         <li><strong>Telefone:</strong> {{ pessoa.telefone }}</li>
         <li><strong>Apelido:</strong> {{ pessoa.apelido }}</li>
     </ul>
-    <a href="{% url 'editar' pessoa.id %}">Editar</a> |
-    <a href="/pessoa/{{ pessoa.id }}/deletar/">Apagar</a> |
+    <a href="{% url 'editar' id=pessoa.id %}">Editar</a> |
+    <a href="{% url 'deletar' id=pessoa.id %}">Deletar</a> |
     <a href="{% url 'index' %}">Voltar</a>
 </article>
 {% endblock %}

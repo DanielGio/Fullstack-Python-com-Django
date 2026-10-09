@@ -23,3 +23,12 @@ urlpatterns = [
     # Rota para o aplicativo "cadastro"
     path('', include('cadastro.urls')),
 ]
+
+from django.contrib import admin
+from django.urls import include, path
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('cadastro.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+]

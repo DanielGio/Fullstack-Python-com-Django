@@ -16,7 +16,7 @@
 
     {% for pessoa in pessoas %}
     <ul>
-        <li>Nome: {{ pessoa.nome }}</li>
+        <li>Nome: <a href="{% url 'detalhes' id=pessoa.id %}">{{ pessoa.nome }}</a></li>
         <li>E-mail: {{ pessoa.email }}</li>
         <li>Idade: {{ pessoa.idade }}</li>
         <li>Telefone: {{ pessoa.telefone }}</li>
