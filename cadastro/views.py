@@ -1,24 +1,11 @@
-from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Pessoa
-from .forms import PessoaForm, ContatoForm
+from cadastro.forms import PessoaForm
 
 def index(request):
-    # recebe todas as "Pessoas" do banco de dados
-    pessoas = Pessoa.objects.order_by('nome')
-    total = Pessoa.objects.count()
-
-    return render(request, 'cadastro/index.html', {'pessoas': pessoas, 'total': total})
-
-def adicionar(request):
-    if request.method == 'POST':
-        form = PessoaForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    else:
-        form = PessoaForm()
-    return render(request, 'cadastro/adicionar.html', {'form': form})
+    pessoas = Pessoa.objects.all()
+    return render(request, 'cadastro/index.html', {'pessoas': pessoas})
 
 def contato(request):
     if request.method == 'POST':
@@ -31,21 +18,35 @@ def contato(request):
         form = ContatoForm()
     return render(request, 'cadastro/contato.html', {'form': form})
 
+@login_required
+def adicionar(request):
+    if request.method == 'POST':
+        form = PessoaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = PessoaForm()
+    return render(request, 'cadastro/adicionar.html', {'form': form})
+
+@login_required
 def detalhes(request, id):
     pessoa = get_object_or_404(Pessoa, id=id)
     return render(request, 'cadastro/detalhes.html', {'pessoa': pessoa})
 
+@login_required
 def editar(request, id):
     pessoa = get_object_or_404(Pessoa, id=id)
     if request.method == 'POST':
         form = PessoaForm(request.POST, instance=pessoa)
         if form.is_valid():
             form.save()
-            return redirect('detalhes', id=pessoa.id)
+            return redirect('detalhes', id=id)
     else:
         form = PessoaForm(instance=pessoa)
-    return render(request, 'cadastro/adicionar.html', {'form': form})
+    return render(request, 'cadastro/editar.html', {'form': form, 'pessoa': pessoa})
 
+@login_required
 def deletar(request, id):
     pessoa = get_object_or_404(Pessoa, id=id)
     if request.method == 'POST':

@@ -1,0 +1,16 @@
+{% extends 'cadastro/base.html' %}
+
+{% block titulo %}Cadastro - Editar {{ pessoa.nome }}{% endblock %}
+
+{% block conteudo %}
+<article>
+    <h2>Editar {{ pessoa.nome }}</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+        <a href="{% url 'detalhes' id=pessoa.id %}">Cancelar</a>
+    </form>
+</article>
+{% endblock %}

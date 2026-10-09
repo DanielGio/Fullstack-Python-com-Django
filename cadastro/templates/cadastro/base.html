@@ -16,8 +16,18 @@
 <nav>
     <a href="{% url 'index' %}">Início</a> |
     <a href="{% url 'contato' %}">Contato</a> |
-    <a href="{% url 'adicionar' %}">Adicionar</a>
+    <a href="{% url 'adicionar' %}">Adicionar</a> |
+    {% if user.is_authenticated %}
+        Olá, {{ user.username }}! |
+        <form method="POST" action="{% url 'logout' %}" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit">Sair</button>
+        </form>
+    {% else %}
+    <a href="{% url 'login' %}">Entrar</a>
+    {% endif %}
 </nav>
+
     <hr>
 
     <main>

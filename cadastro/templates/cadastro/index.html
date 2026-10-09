@@ -9,19 +9,18 @@
     <h2>Pessoas Cadastradas</h2>
 
     {% if total == 0 %}
-    
+
     <p>Ooops! Cadastre alguém primeiro!</p>
-    
+
     {% else %}
 
     {% for pessoa in pessoas %}
     <ul>
-        <li>Nome: <a href="{% url 'detalhes' id=pessoa.id %}">{{ pessoa.nome }}</a></li>
-        <li>E-mail: {{ pessoa.email }}</li>
-        <li>Idade: {{ pessoa.idade }}</li>
-        <li>Telefone: {{ pessoa.telefone }}</li>
-        <li>Apelido: {{ pessoa.apelido}}</li>
-    </ul>    
+        <li>ID: {{ pessoa.id }}</li>
+        <li>Nome: {{ pessoa.nome }}</li>
+        {% if pessoa.telefone %}<li>Telefone: {{ pessoa.telefone }}</li>{% endif %}
+        <li><a href="{% url 'detalhes' id=pessoa.id %}">Ver detalhes</a></li>
+    </ul>
     {% endfor %}
 
     {% endif %}
