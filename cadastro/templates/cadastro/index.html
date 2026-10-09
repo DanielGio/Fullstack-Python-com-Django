@@ -8,6 +8,20 @@
 
     <h2>Pessoas Cadastradas</h2>
 
+    {% if user.is_authenticated %}
+      Você está logado! 
+    {% else %}
+    Você não está logado!
+    <a href="{% url 'login' %}">Entrar</a>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+    <p>Usuário {{ user.username }} com e-mail {{ user.email }} está aqui</p>
+    <p>{{ user.first_name }} {{ user.last_name }}</p>
+    {% else %}
+    <p>Loga aí, por favor!</p>
+    {% endif %}
+
     {% if total == 0 %}
 
     <p>Ooops! Cadastre alguém primeiro!</p>
