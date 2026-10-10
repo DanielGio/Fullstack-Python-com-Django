@@ -14,39 +14,39 @@
     <header>
         <h1>Cadastro</h1>
     </header>
-    <hr>
 
-<nav>
-    <a href="{% url 'index' %}">Início</a> |
-    <a href="{% url 'contato' %}">Contato</a> |
-    <a href="{% url 'adicionar' %}">Adicionar</a> |
-    {% if user.is_authenticated %}
-        Olá, {{ user.username }}! |
-        <form method="POST" action="{% url 'logout' %}" style="display: inline;">
-            {% csrf_token %}
-            <button type="submit">Sair</button>
-        </form>
-    {% else %}
-    <a href="{% url 'login' %}">Entrar</a>
-    {% endif %}
-</nav>
+    <nav>
+        <a href="{% url 'index' %}">Início</a>
+        <a href="{% url 'contato' %}">Contato</a>
+        <a href="{% url 'adicionar' %}">Adicionar</a>
 
-    <hr>
+        <div class="nav-direita">
+            {% if user.is_authenticated %}
+                <span>Olá, {{ user.username }}!</span>
+                <form method="POST" action="{% url 'logout' %}" class="form-sair">
+                    {% csrf_token %}
+                    <button type="submit">Sair</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">Entrar</a>
+            {% endif %}
+        </div>
+    </nav>
 
     {% if messages %}
-        <ul>
+        <ul class="mensagens">
             {% for message in messages %}
                 <li class="{{ message.tags }}">{{ message }}</li>
             {% endfor %}
         </ul>
     {% endif %}
 
-<main>
-    {{ teste | safe }}
-    {% block conteudo %}{% endblock %}
-</main>
+    <main>
+        {{ teste | safe }}
 
-    <hr>
+        {% block conteudo %}{% endblock %}
+    </main>
+
     <footer>
         <p>&copy; 2026 Todos os direitos reservados - Cadastro! {{ nome | default:"Visitante" }}</p>
     </footer>

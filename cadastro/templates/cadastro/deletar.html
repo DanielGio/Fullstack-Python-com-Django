@@ -8,10 +8,12 @@
     <h2>Apagar {{ pessoa.nome }}?</h2>
     <p>Essa ação não pode ser desfeita!</p>
 
-    <form method="POST">
+       <form method="POST">
         {% csrf_token %}
-        <button type="submit">Confirmar</button>
-        <a href="{% url 'detalhes' id=pessoa.id %}">Cancelar</a>
+        <div class="acoes">
+            <button type="submit" class="botao-perigo">Confirmar</button>
+            <a class="botao botao-secundario" href="{% url 'detalhes' id=pessoa.id %}">Cancelar</a>
+        </div>
     </form>
 </article>
 

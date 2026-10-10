@@ -13,8 +13,11 @@
         <li><strong>Telefone:</strong> {{ pessoa.telefone }}</li>
         <li><strong>Apelido:</strong> {{ pessoa.apelido }}</li>
     </ul>
-    <a href="{% url 'editar' id=pessoa.id %}">Editar</a> |
-    <a href="{% url 'deletar' id=pessoa.id %}">Deletar</a> |
-    <a href="{% url 'index' %}">Voltar</a>
+    
+    <div class="acoes">
+        <a class="botao" href="{% url 'editar' id=pessoa.id %}">Editar</a>
+        <a class="botao botao-perigo" href="{% url 'deletar' id=pessoa.id %}">Deletar</a>
+        <a class="botao botao-secundario" href="{% url 'index' %}">Voltar</a>
+    </div>
 </article>
 {% endblock %}

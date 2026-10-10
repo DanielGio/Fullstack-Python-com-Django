@@ -26,16 +26,18 @@
 
     <p>Ooops! Cadastre alguém primeiro!</p>
 
-    {% else %}
+        {% else %}
 
-    {% for pessoa in pessoas %}
-    <ul>
-        <li>ID: {{ pessoa.id }}</li>
-        <li>Nome: {{ pessoa.nome }}</li>
-        {% if pessoa.telefone %}<li>Telefone: {{ pessoa.telefone }}</li>{% endif %}
-        <li><a href="{% url 'detalhes' id=pessoa.id %}">Ver detalhes</a></li>
-    </ul>
-    {% endfor %}
+    <div class="cards">
+        {% for pessoa in pessoas %}
+        <ul class="card">
+            <li>ID: {{ pessoa.id }}</li>
+            <li>Nome: {{ pessoa.nome }}</li>
+            {% if pessoa.telefone %}<li>Telefone: {{ pessoa.telefone }}</li>{% endif %}
+            <li><a href="{% url 'detalhes' id=pessoa.id %}">Ver detalhes</a></li>
+        </ul>
+        {% endfor %}
+    </div>
 
     {% endif %}
 

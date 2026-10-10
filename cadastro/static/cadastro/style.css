@@ -1,35 +1,93 @@
+:root {
+    --cor-fundo: #f3f4f6;
+    --cor-card: #ffffff;
+    --cor-texto: #1f2937;
+    --cor-suave: #6b7280;
+    --cor-borda: #e5e7eb;
+    --cor-menu: #1f2937;
+    --cor-primaria: #2563eb;
+    --cor-primaria-escura: #1d4ed8;
+    --cor-perigo: #dc2626;
+    --cor-perigo-escura: #b91c1c;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    line-height: 1.5;
 }
 
+h1, h2 {
+    color: var(--cor-texto);
+}
+
+a {
+    color: var(--cor-primaria);
+}
+
+/* ---------- Menu ---------- */
 nav {
-    background-color: #a600ff;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    background-color: var(--cor-menu);
     color: white;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    margin-right: 10px;
+    font-weight: bold;
 }
 
-h1 {
-    color: #333;
+nav a:hover {
+    text-decoration: underline;
 }
 
-button {
-    background-color: #333;
-    color: white;
-    padding: 7px 14px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.nav-direita {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
+
+.form-sair {
+    margin: 0;
+}
+
+.form-sair button {
+    background-color: transparent;
+    border: 1px solid #9ca3af;
+    padding: 4px 12px;
+}
+
+.form-sair button:hover {
+    background-color: #374151;
+}
+
+/* ---------- Mensagens ---------- */
+.mensagens {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+}
+
+.mensagens li {
+    margin-bottom: 8px;
+}
+
 .success {
     background-color: #d4edda;
     color: #155724;
@@ -44,4 +102,155 @@ button {
     padding: 10px;
     border-radius: 4px;
     list-style: none;
+}
+
+.warning {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 10px;
+    border-radius: 4px;
+    list-style: none;
+}
+
+.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    padding: 10px;
+    border-radius: 4px;
+    list-style: none;
+}
+
+/* ---------- Cartões ---------- */
+article,
+.card {
+    background-color: var(--cor-card);
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+ul.card {
+    list-style: none;
+    margin: 0;
+}
+
+ul.card li {
+    padding: 4px 0;
+}
+
+article ul {
+    list-style: none;
+    padding: 0;
+}
+
+article ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+/* ---------- Formulários ---------- */
+form p {
+    margin: 0 0 14px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1em;
+    font-family: inherit;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid var(--cor-primaria);
+    border-color: transparent;
+}
+
+.helptext {
+    display: block;
+    font-size: 0.85em;
+    color: var(--cor-suave);
+}
+
+.errorlist {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 6px;
+    color: var(--cor-perigo);
+    font-size: 0.9em;
+}
+
+/* ---------- Botões ---------- */
+button,
+.botao {
+    display: inline-block;
+    background-color: var(--cor-primaria);
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button:hover,
+.botao:hover {
+    background-color: var(--cor-primaria-escura);
+}
+
+.botao-secundario {
+    background-color: #e5e7eb;
+    color: var(--cor-texto);
+}
+
+.botao-secundario:hover {
+    background-color: #d1d5db;
+}
+
+.botao-perigo {
+    background-color: var(--cor-perigo);
+}
+
+.botao-perigo:hover {
+    background-color: var(--cor-perigo-escura);
+}
+
+.acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+/* ---------- Rodapé ---------- */
+footer {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--cor-borda);
+    color: var(--cor-suave);
+    font-size: 0.9em;
+    text-align: center;
 }
