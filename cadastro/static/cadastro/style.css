@@ -1,11 +1,11 @@
 :root {
-    --cor-fundo: #f3f4f6;
+    --cor-fundo: #ccdbf8;
     --cor-card: #ffffff;
     --cor-texto: #1f2937;
     --cor-suave: #6b7280;
-    --cor-borda: #e5e7eb;
-    --cor-menu: #1f2937;
-    --cor-primaria: #2563eb;
+    --cor-borda: #000000;
+    --cor-menu: #7c7c7c;
+    --cor-primaria: #007230;
     --cor-primaria-escura: #1d4ed8;
     --cor-perigo: #dc2626;
     --cor-perigo-escura: #b91c1c;
@@ -124,7 +124,7 @@ nav a:hover {
 article,
 .card {
     background-color: var(--cor-card);
-    border: 1px solid var(--cor-borda);
+    border: 3px solid var(--cor-borda);
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -249,7 +249,7 @@ button:hover,
 footer {
     margin-top: 32px;
     padding-top: 16px;
-    border-top: 1px solid var(--cor-borda);
+    border-top: 3px solid var(--cor-borda);
     color: var(--cor-suave);
     font-size: 0.9em;
     text-align: center;
