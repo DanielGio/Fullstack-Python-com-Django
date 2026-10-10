@@ -19,3 +19,11 @@ class Contato(models.Model):
 
     def __str__(self):
         return f'{self.assunto} - {self.nome}'
+    
+class Telefone(models.Model):
+    pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE, related_name='telefones')
+    numero = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.numero
+    

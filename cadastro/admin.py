@@ -1,5 +1,15 @@
 from django.contrib import admin
-from .models import Contato, Pessoa
+from .models import Pessoa, Telefone
 
-admin.site.register(Pessoa)
-admin.site.register(Contato)
+class TelefoneInline(admin.TabularInline):
+    model = Telefone
+    extra = 1
+
+class PessoaAdmin(admin.ModelAdmin):
+    inlines = [TelefoneInline]
+
+class TelefoneAdmin(admin.ModelAdmin):
+    list_display = ['numero', 'pessoa']
+
+admin.site.register(Pessoa, PessoaAdmin)
+admin.site.register(Telefone, TelefoneAdmin)
