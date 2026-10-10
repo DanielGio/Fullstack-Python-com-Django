@@ -6,12 +6,6 @@
 <article>
     <h1>Contato</h1>
 
-    {% if messages %}
-        {% for mensagem in messages %}
-            <p><strong>{{ mensagem }}</strong></p>
-        {% endfor %}
-    {% endif %}
-
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}

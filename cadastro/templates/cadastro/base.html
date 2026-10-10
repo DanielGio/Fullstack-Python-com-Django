@@ -1,5 +1,4 @@
-{% load static $}
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -34,12 +33,17 @@
 
     <hr>
 
-    <main>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
-        {{ teste | safe }}
-
-        {% block conteudo %}{% endblock %}
-    </main>
+<main>
+    {% block conteudo %}{% endblock %}
+</main>
 
     <hr>
     <footer>
