@@ -12,13 +12,14 @@
 <body>
 
     <header>
-        <h1>Cadastro</h1>
+        <h1>{{ dono }}</h1>
     </header>
+    <hr>
 
     <nav>
         <a href="{% url 'index' %}">Início</a>
+        <a href="{% url 'adicionar' %}">Nova pessoa</a>
         <a href="{% url 'contato' %}">Contato</a>
-        <a href="{% url 'adicionar' %}">Adicionar</a>
 
         <div class="nav-direita">
             {% if user.is_authenticated %}
@@ -48,7 +49,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Todos os direitos reservados - Cadastro! <!-- {{ nome | default:"Visitante" }}</p> -->
+        <p>&copy; 2026 Todos os direitos reservados - Cadastro! {{ dono | default:"Visitante" }}</p>
     </footer>
 
 </body>

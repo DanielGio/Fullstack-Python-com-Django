@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Pessoa, Telefone
+from .models import Pessoa, Telefone, Contato
 
 class TelefoneInline(admin.TabularInline):
     model = Telefone
@@ -12,4 +12,5 @@ class TelefoneAdmin(admin.ModelAdmin):
     list_display = ['numero', 'pessoa']
 
 admin.site.register(Pessoa, PessoaAdmin)
+admin.site.register(Contato)
 admin.site.register(Telefone, TelefoneAdmin)
