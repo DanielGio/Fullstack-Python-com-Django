@@ -3,21 +3,22 @@
 {% block titulo %}Cadastro - {{ pessoa.nome }}{% endblock %}
 
 {% block conteudo %}
-<article>
-    <h2>Detalhes de {{ pessoa.nome }}</h2>
-    <ul>
-        <li><strong>ID:</strong> {{ pessoa.id }}</li>
-        <li><strong>Nome:</strong> {{ pessoa.nome }}</li>
-        <li><strong>E-mail:</strong> {{ pessoa.email }}</li>
-        <li><strong>Idade:</strong> {{ pessoa.idade }} anos</li>
-        <li><strong>Telefone:</strong> {{ pessoa.telefone }}</li>
-        <li><strong>Apelido:</strong> {{ pessoa.apelido }}</li>
-    </ul>
-    
-    <div class="acoes">
-        <a class="botao" href="{% url 'editar' id=pessoa.id %}">Editar</a>
-        <a class="botao botao-perigo" href="{% url 'deletar' id=pessoa.id %}">Deletar</a>
-        <a class="botao botao-secundario" href="{% url 'index' %}">Voltar</a>
+<div class="card">
+    <div class="card-header">
+        <h2 class="h4 mb-0">Detalhes de {{ pessoa.nome }}</h2>
     </div>
-</article>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>ID:</strong> {{ pessoa.id }}</li>
+        <li class="list-group-item"><strong>Nome:</strong> {{ pessoa.nome }}</li>
+        <li class="list-group-item"><strong>E-mail:</strong> {{ pessoa.email }}</li>
+        <li class="list-group-item"><strong>Idade:</strong> {{ pessoa.idade }} anos</li>
+        <li class="list-group-item"><strong>Telefone:</strong> {{ pessoa.telefone }}</li>
+        <li class="list-group-item"><strong>Apelido:</strong> {{ pessoa.apelido }}</li>
+    </ul>
+    <div class="card-body d-flex gap-2">
+        <a href="{% url 'editar' id=pessoa.id %}" class="btn btn-primary">Editar</a>
+        <a href="{% url 'deletar' id=pessoa.id %}" class="btn btn-danger">Deletar</a>
+        <a href="{% url 'index' %}" class="btn btn-outline-secondary ms-auto">Voltar</a>
+    </div>
+</div>
 {% endblock %}

@@ -1,0 +1,20 @@
+{% load bootstrap_extras %}
+
+{% for erro in form.non_field_errors %}
+    <div class="alert alert-danger">{{ erro }}</div>
+{% endfor %}
+
+{% for field in form.hidden_fields %}{{ field }}{% endfor %}
+
+{% for field in form.visible_fields %}
+    <div class="mb-3">
+        <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+        {{ field|bs_field }}
+        {% for erro in field.errors %}
+            <div class="invalid-feedback d-block">{{ erro }}</div>
+        {% endfor %}
+        {% if field.help_text %}
+            <div class="form-text">{{ field.help_text|safe }}</div>
+        {% endif %}
+    </div>
+{% endfor %}

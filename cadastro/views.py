@@ -1,5 +1,3 @@
-# cadastro\views.py
-
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
@@ -8,21 +6,11 @@ from .forms import PessoaForm, ContatoForm
 
 
 def index(request):
+    # recebe todas as "Pessoas" do banco de dados
     pessoas = Pessoa.objects.order_by('nome')
     total = Pessoa.objects.count()
+
     return render(request, 'cadastro/index.html', {'pessoas': pessoas, 'total': total})
-
-
-def contato(request):
-    if request.method == 'POST':
-        form = ContatoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Mensagem enviada com sucesso!')
-            return redirect('contato')
-    else:
-        form = ContatoForm()
-    return render(request, 'cadastro/contato.html', {'form': form})
 
 
 @login_required
@@ -36,6 +24,18 @@ def adicionar(request):
     else:
         form = PessoaForm()
     return render(request, 'cadastro/adicionar.html', {'form': form})
+
+
+def contato(request):
+    if request.method == 'POST':
+        form = ContatoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Mensagem enviada com sucesso!')
+            return redirect('contato')
+    else:
+        form = ContatoForm()
+    return render(request, 'cadastro/contato.html', {'form': form})
 
 
 @login_required

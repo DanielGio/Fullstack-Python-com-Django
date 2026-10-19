@@ -3,18 +3,20 @@
 {% block titulo %}Cadastro - Apagar {{ pessoa.nome }}{% endblock %}
 
 {% block conteudo %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card border-danger">
+            <div class="card-body">
+                <h2 class="h4 text-danger">Apagar {{ pessoa.nome }}?</h2>
+                <p>Essa ação não pode ser desfeita!</p>
 
-<article>
-    <h2>Apagar {{ pessoa.nome }}?</h2>
-    <p>Essa ação não pode ser desfeita!</p>
-
-       <form method="POST">
-        {% csrf_token %}
-        <div class="acoes">
-            <button type="submit" class="botao-perigo">Confirmar</button>
-            <a class="botao botao-secundario" href="{% url 'detalhes' id=pessoa.id %}">Cancelar</a>
+                <form method="POST" class="d-flex gap-2">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Confirmar</button>
+                    <a href="{% url 'detalhes' id=pessoa.id %}" class="btn btn-outline-secondary">Cancelar</a>
+                </form>
+            </div>
         </div>
-    </form>
-</article>
-
+    </div>
+</div>
 {% endblock %}

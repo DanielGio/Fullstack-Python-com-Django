@@ -1,32 +1,21 @@
 {% extends 'cadastro/base.html' %}
 
-{% load widget_tweaks %}
-
 {% block titulo %}Cadastro - Faça Contato{% endblock %}
 
 {% block conteudo %}
-<article>
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="h4 mb-4">Contato</h2>
 
-    <h1>Contato</h1>
-
-    <h2>Fale com a gente!</h2>
-    
-    <p>Preencha todos os campos do formulário abaixo para entrar e contato com e equipe do site.</p>
-
-   <form method="POST">
-        {% csrf_token %}
-        {# form.as_p #}
-
-        {% for field in form %}
-        <p class="mb-3">
-            {{ field.label_tag }}
-            {{ field }}
-        </p>
-        {% endfor %}
-
-
-        <button type="submit">Enviar</button>
-    </form>
-
-</article>
+                <form method="POST">
+                    {% csrf_token %}
+                    {% include 'cadastro/_form.html' %}
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

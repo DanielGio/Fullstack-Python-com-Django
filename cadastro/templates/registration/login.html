@@ -3,11 +3,19 @@
 {% block titulo %}Login{% endblock %}
 
 {% block conteudo %}
-    <h1>Login</h1>
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="h4 mb-4">Login</h2>
 
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Entrar</button>
-    </form>
+                <form method="POST">
+                    {% csrf_token %}
+                    {% include 'cadastro/_form.html' %}
+                    <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
